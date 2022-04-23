@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  # Mqqt
+  broker:
+    image: eclipse-mosquitto
+    volumes:
+      - ./mosquitto:/mosquitto/config
+    networks:
+      - local
+    ports:
+      - 8883:8883
+      - 9001:9001
+
+  # Nestjs Mqqt Microservice
+  nestjs-microservice:
+    build: ../mqqt-microservice/
+    networks:
+      - local
+    depends_on:
+      - mqqt-mosquitto
+      - node-red
+
+  # Node-RED
+  node-red:
+    image: nodered/node-red
+    networks:
+      - local
+    ports:
+      - 1880:1880
+    depends_on:
+      - mqqt-mosquitto
+
+networks:
+  local:

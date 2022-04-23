@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @MessagePattern('echo')
-  echo(data: string): void {
+  echo(data: unknown): void {
     this.logger.log("Topic: echo - Recieved data")
     this.logger.log("Data", data)
     this.client.send('echo', data)

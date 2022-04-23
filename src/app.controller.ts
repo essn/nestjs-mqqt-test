@@ -1,12 +1,25 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Inject, Logger } from '@nestjs/common';
+import { ClientProxy, MessagePattern } from '@nestjs/microservices';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  private readonly logger: Logger = new Logger(AppController.name)
+
+  constructor(
+    @Inject('APP_SERVICE') private readonly client: ClientProxy) { }
+
+  @MessagePattern('greet')
+  greet(data: string): string {
+    this.logger.log("Topic: Greet - Recieved data")
+    this.logger.log("Data", data)
+    return data;
+  }
+
+  @MessagePattern('echo')
+  echo(data: string): string {
+    this.logger.log("Topic: echo - Recieved data")
+    this.logger.log("Data", data)
+    this.client.send('echo', data)
   }
 }

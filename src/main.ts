@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
     transport: Transport.MQTT,
     options: {
-      url: 'mqqt://localhost:1883'
+      url: 'mqqt://0.0.0.0:1883'
     }
   });
 

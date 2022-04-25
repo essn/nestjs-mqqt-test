@@ -14,7 +14,7 @@ services:
 
   # Nestjs Mqqt Microservice
   nestjs-microservice:
-    build: ../mqqt-microservice/
+    build: ../.
     networks:
       - local
     depends_on:

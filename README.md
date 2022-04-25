@@ -1,3 +1,11 @@
+# Test
+
+Check out the [test instructions](./TEST.md)
+
+---
+
+# Boilerplate NestJS Below (you can probably ignore this unless you want to mess with the microserverce)
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>

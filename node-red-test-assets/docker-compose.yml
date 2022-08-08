@@ -26,6 +26,8 @@ services:
     image: nodered/node-red
     networks:
       - local
+    volumes:
+      - data:/data
     ports:
       - 1880:1880
     depends_on:
@@ -33,3 +35,6 @@ services:
 
 networks:
   local:
+
+volumes:
+  data:

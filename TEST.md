@@ -7,9 +7,11 @@ The echo service defined in `src/application.controller.ts` simply returns whate
 
 ## Steps
 ### Using flows.json
+It should just auto populate with the data volume. If it does not:
+
 1. `cd node-red-test-assets && docker compose up`
 2. Navigate to localhost:8881 to access the Node-RED UI
-3. In the top right menu select import nodes and upload `node/node-red-test-assets/flows.json`
+3. In the top right menu select import nodes and upload `node-red-test-assets/data/flows.json`
 
 
 ### Not Using flows.json
